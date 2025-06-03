@@ -5,12 +5,12 @@ Feature: Actualización de perfil
 
   Scenario: Actualización exitosa del perfil
     Given El usuario ha iniciado sesión en la plataforma
-    And Se encuentra en la página de edición de perfil
-    When Modifica los campos de ciclo, cursos, descripción y guarda los cambios
+    And Se encuentra en la sección de edición de perfil
+    When Modifica los campos de ciclo, cursos o descripción y guarda los cambios
     Then El sistema debe guardar la información correctamente
-    And Mostrar un mensaje de confirmación
+    And Mostrar un mensaje de confirmación de actualización
 
   Scenario: Visualización de la información actualizada
     Given Que el perfil del usuario ha sido actualizado previamente
     When Otro usuario visualiza ese perfil
-    Then Debe ver la información más reciente del usuario
+    Then Debe ver la información más reciente registrada por el usuario
