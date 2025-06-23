@@ -1,16 +1,16 @@
-Feature: Endpoint para eliminar una tutoría
-  Como desarrollador backend,
-  Quiero permitir que los tutores eliminen sus publicaciones de tutoría
-  Para que puedan gestionar el contenido que ofrecen
+Feature: Endpoint para Eliminar Publicación de Tutoría
+  Como Developer,
+  Quiero implementar un endpoint que permita a los tutores eliminar su publicación de tutoría,
+  Para gestionar sus servicios disponibles en la plataforma.
 
   Scenario: Eliminación exitosa de tutoría
-    Given Que el tutor está autenticado y autorizado
-    When Realiza una solicitud DELETE a /api/v1/tutorings/{tutoringId} con un ID válido
-    Then El sistema debe responder con un código 204 (No Content)
-    And El recurso debe eliminarse correctamente de la base de datos
-
-  Scenario: Error por tutoría no encontrada
     Given Que el tutor está autenticado
-    When Realiza una solicitud DELETE con un ID que no existe
-    Then El sistema debe responder con un código 404 (Not Found)
-    And Mostrar un mensaje de error indicando que la tutoría no fue encontrada
+    When Realiza una solicitud DELETE a "/api/v1/tutorings/{tutoringId}"
+    Then La respuesta debe ser 204 No Content
+    And La tutoría debe eliminarse de la base de datos
+
+  Scenario: Intentar eliminar tutoría inexistente
+    Given Que el tutor está autenticado
+    When Realiza una solicitud DELETE a "/api/v1/tutorings/{tutoringId}" con un ID inválido
+    Then La respuesta debe ser 404 Not Found
+    And El cuerpo debe incluir un mensaje indicando que la tutoría no fue encontrada
