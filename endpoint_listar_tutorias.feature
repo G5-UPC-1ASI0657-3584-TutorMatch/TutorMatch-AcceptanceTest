@@ -1,16 +1,16 @@
-Feature: Endpoint para obtener lista de tutorías
-  Como desarrollador backend,
-  Quiero proporcionar un endpoint para listar todas las tutorías disponibles
-  Para que los estudiantes puedan explorarlas desde la plataforma
+Feature: Endpoint para Obtener Publicaciones de Tutorías
+  Como Developer,
+  Quiero implementar un endpoint en la API RESTful que permita obtener una lista de publicaciones de tutorías,
+  Para que los estudiantes puedan explorar las opciones disponibles.
 
-  Scenario: Listado exitoso de tutorías
+  Scenario: Obtención exitosa de tutorías
     Given Que el usuario está autenticado
-    When Realiza una solicitud GET a /api/v1/tutorings
-    Then El sistema debe responder con un código 200 (OK)
-    And Retornar un arreglo con todas las tutorías publicadas
+    When Realiza una solicitud GET a "/api/v1/tutorings"
+    Then La respuesta debe ser 200 OK
+    And El cuerpo debe contener una lista de publicaciones de tutorías
 
-  Scenario: Filtro por tutor específico
+  Scenario: Filtrar tutorías por tutor
     Given Que el usuario está autenticado
-    When Realiza una solicitud GET a /api/v1/tutorings?tutorId=3
-    Then El sistema debe responder con un código 200 (OK)
-    And Retornar solo las tutorías creadas por el tutor con ID 3
+    When Realiza una solicitud GET a "/api/v1/tutorings?tutorId=1"
+    Then La respuesta debe ser 200 OK
+    And La lista debe mostrar solo las tutorías del tutor con ID 1
